@@ -1,5 +1,6 @@
 .PHONY: docs
 
+
 all: unittest
 
 docs:
@@ -8,8 +9,16 @@ docs:
 pylint:
 	pylint feeluown/gui/pages/
 
+
+MYPY_PKGS=
+MYPY_PKGS+=feeluown/library/
+MYPY_PKGS+=feeluown/player/
+MYPY_PKGS+=feeluown/app/
+MYPY_PKGS+=feeluown/entry_points/
+
 mypy:
-	mypy feeluown/library feeluown/player
+# Add flag --check-untyped-defs.
+	mypy  ${MYPY_PKGS}
 
 flake8:
 	flake8 fuocore/ feeluown/ tests/
